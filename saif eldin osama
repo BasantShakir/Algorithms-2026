@@ -1,0 +1,20 @@
+def selection_sort_asc(stations, arrival):
+    n = len(arrival)
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if arrival[j] < arrival[min_index]:
+                min_index = j
+        # تبديل أوقات الوصول
+        arrival[i], arrival[min_index] = arrival[min_index], arrival[i]
+        # تبديل أسماء المحطات بنفس الترتيب
+        stations[i], stations[min_index] = stations[min_index], stations[i]
+
+Stations = ["محطة أ", "محطة ب", "محطة ج", "محطة د", "محطة هـ"]
+ArrivalTime = [15, 5, 20, 10, 8]
+
+selection_sort_asc(Stations, ArrivalTime)
+
+print("ترتيب المحطات حسب أقصر وقت وصول أول حافلة:")
+for station, time in zip(Stations, ArrivalTime):
+    print(f"{station}: {time} دقيقة")
