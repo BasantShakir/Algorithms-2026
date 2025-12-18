@@ -1,0 +1,20 @@
+def selection_sort_desc(cities, population):
+    n = len(population)
+    for i in range(n - 1):
+        max_index = i
+        for j in range(i + 1, n):
+            if population[j] > population[max_index]:
+                max_index = j
+        # بدّل السكان
+        population[i], population[max_index] = population[max_index], population[i]
+        # بدّل المدن بنفس الترتيب
+        cities[i], cities[max_index] = cities[max_index], cities[i]
+
+Cities = ["مدينة أ", "مدينة ب", "مدينة ج", "مدينة د", "مدينة هـ"]
+Population = [5000, 12000, 8000, 3000, 10000]
+
+selection_sort_desc(Cities, Population)
+
+print("المدن حسب عدد السكان من الأكبر للأقل:")
+for city, pop in zip(Cities, Population):
+    print(f"{city}: {pop} نسمة")
